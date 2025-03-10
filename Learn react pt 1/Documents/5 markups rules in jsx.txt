@@ -1,0 +1,144 @@
+--------------------------------------------------------------------------------
+SEE:
+
+JSX Markup Rules in React
+
+JSX (JavaScript XML) is a syntax extension used in React to describe what the UI should look like. It allows us to write HTML-like code inside JavaScript. However, JSX follows certain markup rules to ensure proper rendering and avoid errors.
+
+Here are the three fundamental JSX markup rules:
+1) Return a single root element
+2) Close all the tags
+3) camelCase most of the things
+
+--------------------------------------------------------------------------------
+SEE:
+
+1️⃣ Return a Single Root Element
+
+In JSX, every component must return a single parent element. If multiple elements need to be returned, they must be wrapped inside a parent tag or a React Fragment (<> </>).
+
+Why is this required?
+
+JSX compiles down to React.createElement(), which expects a single element as the root.
+
+Returning multiple elements without a wrapper will cause a syntax error.
+
+❌ Incorrect:
+function App() {
+    return (
+        <h1>Hello</h1>
+        <p>Welcome to React</p>
+    );  // ❌ ERROR: Adjacent JSX elements must be wrapped in an enclosing tag.
+}
+
+✅ Correct (Using a <div>)
+function App() {
+    return (
+        <div>
+            <h1>Hello</h1>
+            <p>Welcome to React</p>
+        </div>
+    );
+}
+
+✅ Correct (Using React Fragments)
+function App() {
+    return (
+        <>
+            <h1>Hello</h1>
+            <p>Welcome to React</p>
+        </>
+    );
+}
+
+Explanation:
+
+In the first correct example, we wrap everything inside a <div>.
+In the second example, we use <> </>, which is a React Fragment. It helps avoid unnecessary <div> wrappers in the final HTML output.
+
+--------------------------------------------------------------------------------
+
+2️⃣ Close All Tags Properly
+
+JSX requires all tags to be properly closed, even for self-closing tags like <img>, <br>, <input>, etc.
+
+Why is this required?
+
+HTML allows some tags to be left unclosed (e.g., <img>), but JSX enforces proper closing for consistency and better parsing.
+
+Not closing a tag will result in a compilation error.
+
+❌ Incorrect:
+function App() {
+    return (
+        <img src="logo.png">  // ❌ ERROR: JSX requires self-closing tags.
+    );
+}
+
+✅ Correct:
+function App() {
+    return (
+        <img src="logo.png" />  // ✅ Properly closed self-closing tag.
+    );
+}
+
+✅ For regular tags:
+function App() {
+    return (
+        <div>
+            <h1>Welcome</h1>  // ✅ Properly closed.
+        </div>
+    );
+}
+
+Explanation:
+
+Self-closing elements (like <img />) must have a trailing slash (/).
+All other elements must have a proper opening and closing tag.
+
+--------------------------------------------------------------------------------
+
+3️⃣ Use camelCase for Most Attributes
+
+In JSX, most attributes follow the camelCase naming convention instead of regular HTML attributes.
+
+Why is this required?
+
+JSX is syntactic sugar over JavaScript, and JavaScript follows camelCase naming.
+
+Directly using lowercase attributes (like class, onclick) will cause errors or unintended behavior.
+
+❌ Incorrect:
+function App() {
+    return (
+        <div class="container">Hello</div>  // ❌ ERROR: 'class' is reserved in JavaScript.
+    );
+}
+
+✅ Correct:
+function App() {
+    return (
+        <div className="container">Hello</div>  // ✅ Use 'className' instead of 'class'.
+    );
+}
+
+Other camelCase examples:
+
+✅ onClick instead of onclick
+✅ tabIndex instead of tabindex
+✅ htmlFor instead of for (for <label> elements)
+
+Explanation:
+
+class is a reserved keyword in JavaScript, so we use className instead.
+onclick becomes onClick, tabindex becomes tabIndex, etc.
+
+--------------------------------------------------------------------------------
+
+🔥 Summary
+
+✔ Always return a single root element.
+✔ Close all self-closing tags properly.
+✔ Use camelCase for most attributes.
+
+By following these JSX markup rules, your React components will be structured correctly and error-free! 🚀

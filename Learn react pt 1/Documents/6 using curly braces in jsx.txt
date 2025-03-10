@@ -1,0 +1,204 @@
+--------------------------------------------------------------------------------
+SEE:
+
+Using JavaScript Inside JSX
+
+JSX allows us to write JavaScript inside our React components, but there are some limitations. While we can use pure JavaScript expressions inside JSX, we cannot directly use all JavaScript functions, especially those that involve side effects like `setTimeout()` or `setInterval()`.
+
+--------------------------------------------------------------------------------
+
+1️⃣ Using JavaScript Inside JSX with `{}` (Curly Braces)
+In JSX, we can't write raw JavaScript directly inside the return statement. Instead, we use curly braces `{}` to embed JavaScript expressions within JSX.
+
+✅ Allowed JavaScript Expressions in JSX:
+- Variable values
+- JavaScript functions returning a value
+- Math operations
+- Ternary operators (Conditional Rendering)
+- `Date` object methods
+
+❌ Not Allowed in JSX (Without Handling Properly):
+- Statements like `if`, `for`, `while`
+- Functions with side effects (`setTimeout`, `setInterval`, `fetch`, etc.)
+- Assignments (`let x = 10;` inside JSX directly)
+
+--------------------------------------------------------------------------------
+
+2️⃣ Example: Using JavaScript in JSX
+
+function Title() {
+  const date = new Date(); // JavaScript Date Object
+  let name = "Krishna"; // Variable declaration
+
+  return (
+    <>
+      <h1>Good morning!</h1>
+      <p>Myself, {name}</p> {/* Accessing variable inside JSX */}
+      <p>
+        The time is about {date.getHours()}:
+        {date.getMinutes() <= 9 ? "0" + date.getMinutes() : date.getMinutes()}
+      </p>
+    </>
+  );
+}
+
+🔹 Explanation of the Example:
+✔ `{name}` → Injects the `name` variable into JSX.  
+✔ `{date.getHours()}` → Calls JavaScript method to display the hour.  
+✔ Ternary Operator `{date.getMinutes() <= 9 ? "0" + date.getMinutes() : date.getMinutes()}` → Ensures a leading zero is added for single-digit minutes.  
+✔ JSX Fragments (`<> </>`) → Used to avoid unnecessary `<div>` wrappers.
+
+--------------------------------------------------------------------------------
+
+3️⃣ Why Can't We Use `setTimeout()` or `setInterval()` Directly in JSX?
+Methods like `setTimeout()` and `setInterval()` are part of Web APIs and cause side effects. React does not allow direct execution inside JSX because JSX is meant for returning UI elements, not handling side effects.
+
+❌ Incorrect (This will cause errors or unexpected behavior):
+
+function App() {
+  setTimeout(() => {
+    console.log("Hello");
+  }, 1000); // ❌ React does not allow direct side effects inside JSX
+  
+  return <h1>Hello</h1>;
+}
+
+✅ Correct (Use `useEffect` for side effects):
+
+import { useEffect } from "react";
+
+function App() {
+  useEffect(() => {
+    setTimeout(() => {
+      console.log("Hello");
+    }, 1000);
+  }, []); // ✅ Runs only once when the component mounts
+
+  return <h1>Hello</h1>;
+}
+
+--------------------------------------------------------------------------------
+SEE:
+
+🔥 Summary:
+✔ Use `{}` to inject JavaScript expressions inside JSX.
+✔ Only expressions (not statements) are allowed in JSX.
+✔ Web API methods like `setTimeout` need React hooks (`useEffect`) for proper execution.
+✔ JSX is primarily for UI rendering, not direct JavaScript execution.
+
+By understanding these rules, you can efficiently use JavaScript inside JSX while following React's best practices! 🚀
+
+--------------------------------------------------------------------------------
+SEE:
+
+Understanding useEffect() in React
+
+React components are designed to handle UI rendering, but they do not directly manage Web API methods like setTimeout() or setInterval(). These are considered side effects, and React provides a dedicated way to handle them using the useEffect() hook.
+
+1️⃣ What is useEffect()?
+
+- useEffect() is a React Hook that allows us to handle side effects inside functional components.
+- It runs after the component renders and helps in managing tasks like API calls, timers, event listeners, and DOM updates.
+- It requires at least one argument, which is a callback function where we define the side effects.
+
+```
+import { useEffect } from "react";
+
+function Component() {
+  useEffect(() => {
+    console.log("Component Mounted");
+  });
+  
+  return <h1>Hello</h1>;
+}
+```
+
+Here, useEffect() runs on every render, which is usually not recommended. To control its execution, we use the dependency array.
+
+--------------------------------------------------------------------------------
+
+2️⃣ Understanding the Dependency Array in useEffect()
+
+- The second argument of useEffect() is the dependency array. It controls when the effect should run.
+- Case 1: Empty Dependency Array [] (Runs Only on Mounting)
+    - If we pass an empty array [], the effect runs only once when the component first renders.
+    - This is useful for initial API calls, setting up event listeners, or starting timers.
+
+    ```
+    useEffect(() => {
+        console.log("Runs only once when component mounts!");
+    }, []); // ✅ Runs once when the component first loads
+    ```
+
+- Case 2: No Dependency Array (Runs on Every Render)
+    - If we do not pass a second argument, the effect runs on every render.
+    - This can cause performance issues if not handled properly.
+
+    ```
+    useEffect(() => {
+        console.log("Runs on every render!");
+    }); // ❌ Avoid this unless necessary
+    ```
+
+- Case 3: Dependency Array with Variables [count] (Runs When count Changes)
+    - When we pass a state variable inside [ ], useEffect() runs only when that variable updates.
+    - Useful for re-running effects based on state changes.
+
+    ```
+    const [count, setCount] = useState(0);
+
+    useEffect(() => {
+      console.log(`Count changed: ${count}`);
+    }, [count]); // ✅ Runs only when 'count' updates
+    ```
+
+--------------------------------------------------------------------------------
+
+3️⃣ Why Can’t We Use setTimeout() or setInterval() Directly in JSX?
+
+- JSX is only responsible for returning UI elements. Web APIs like setTimeout() and setInterval() cause side effects, so they must be handled inside useEffect().
+
+- ❌ Incorrect (This will cause an error or unexpected behavior):
+
+```
+function App() {
+  setTimeout(() => {
+    console.log("Hello");
+  }, 1000); // ❌ Not allowed inside JSX directly
+  
+  return <h1>Hello</h1>;
+}
+```
+
+✅ Correct (Use useEffect() to handle the side effect):
+
+```
+import { useEffect } from "react";
+
+function App() {
+  useEffect(() => {
+    setTimeout(() => {
+      console.log("Hello");
+    }, 1000);
+  }, []); // ✅ Runs only once when component mounts
+  
+  return <h1>Hello</h1>;
+}
+```
+
+--------------------------------------------------------------------------------
+
+🔥 Summary:
+
+✔ useEffect() is used for handling side effects in React components.
+✔ It accepts a callback function where side effects are written.
+✔ The dependency array controls when the effect runs:
+
+[] → Runs only once on mount.
+
+No array → Runs on every render.
+
+[variable] → Runs when the variable updates.
+✔ Web APIs like setTimeout() must be handled inside useEffect().
+
+By understanding and using useEffect() properly, we can efficiently manage side effects in React applications! 🚀

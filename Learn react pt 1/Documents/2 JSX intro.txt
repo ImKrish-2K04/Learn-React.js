@@ -1,0 +1,53 @@
+--------------------------------------------------------------------------------
+SEE:
+
+JSX - JavaScript XML
+
+This allows us to write HTML directly inside JavaScript.
+
+However, JSX is not pure JavaScript, meaning we cannot write JSX code in a regular JavaScript file. If we try to do so and run it in the browser, it will throw an error.
+
+JSX code is internally converted into JavaScript through a process called transpiling, using a tool named Babel.
+
+Let's understand a simple workflow: Whenever we write code in JSX, it is first transpiled by Babel, which converts it into pure JavaScript. This JavaScript code is then used to render the UI on the webpage, allowing us to see the final output.
+
+--------------------------------------------------------------------------------
+SEE:
+
+Setting Up a React Environment:
+
+To build React applications, we need to set up a development environment where we can use React.js.
+
+There are two main ways to do this:
+    - Using Create React App (CRA) – A traditional method to set up a React project.
+    - Using Vite – A modern, faster alternative for setting up React applications.
+
+Previously, Create React App (CRA) was the most commonly used and trusted method for setting up a React environment. However, in 2020, Vite was introduced, offering significantly faster build times and better performance. Due to these advantages, even Meta (Facebook) now recommends using Vite over CRA.
+
+--------------------------------------------------------------------------------
+SEE:
+
+Setting Up a React.js Environment Using Vite 🚀
+
+1️⃣ Select a folder where you want to set up your React environment and open that folder in VS Code.
+
+2️⃣ Open the terminal and run the following command to initiate Vite:
+    npm create vite@latest
+
+3️⃣ Enter the project name (folder name) where your React app will be created.
+    Here, I chose "Learning react js part-1".
+
+4️⃣ Provide a package name (it can be the same as your project name or a custom name).
+    Here, I used "learning-react-js-part-1".
+
+5️⃣ Select a framework – Choose React.
+
+6️⃣ Choose the language version – Select JavaScript.
+
+7️⃣ KUDOS! 🎉 Your React environment is set up!
+
+8️⃣ If the node_modules folder is missing in your project, install dependencies using:
+    npm install
+
+(BTW, npm stands for "Node Package Manager" 😉)
+Now, you're all set to start building with React! 🚀🔥

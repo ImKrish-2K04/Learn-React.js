@@ -1,0 +1,78 @@
+Styling Components in React.js
+
+In React, there are two default CSS files available for styling:
+1️⃣ `App.css` – Mainly used for styling the components inside `App.jsx`.
+2️⃣ `index.css` – Used for global styling, applying styles across the entire application.
+
+--------------------------------------------------------------------------------
+
+1️⃣ Industry Best Practice: Component-Specific CSS Files
+
+- To maintain modularity and clean code structure, developers follow a convention where each component has its own CSS file.
+
+Why separate CSS files per component?
+✔ Better Maintainability – Changes in one component's styles won’t affect others.  
+✔ Improved Readability – Each component has its styles separately defined.  
+✔ Avoids Conflicts – No more global styles unintentionally overriding other components.  
+✔ Industry Standard – Most professional projects follow this structure.
+
+--------------------------------------------------------------------------------
+
+2️⃣ Example: Component-Based CSS Structure
+
+If we have two components:
+- `Product.jsx`
+- `ProductList.jsx`
+
+Then, we create separate CSS files with the same names:
+- `Product.css`
+- `ProductList.css`
+
+File Structure:
+/components
+  ├── Product.jsx
+  ├── Product.css
+  ├── ProductList.jsx
+  ├── ProductList.css
+
+Inside each component file, we simply import its corresponding CSS file:
+
+✅ Example: `Product.jsx` with Component-Specific CSS
+
+```
+import "./Product.css";
+function Product() {
+  return (
+    <div className="product-card">
+      <h2 className="product-title">Product Name</h2>
+    </div>
+  );
+}
+export default Product;
+```
+
+
+✅ `Product.css` (Styles only for Product component)
+
+```
+.product-card {
+  border: 1px solid dd;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.product-title {
+  font-size: 20px;
+  color: blue;
+}
+```
+
+--------------------------------------------------------------------------------
+
+3️⃣ Summary of React Styling Conventions
+✔ Use `App.css` for App-specific styles.  
+✔ Use `index.css` for global styles.  
+✔ Each component should have its own CSS file to maintain modularity.  
+✔ Always import the CSS file inside the respective JSX file.
+
+Following this convention will help keep your React project structured, scalable, and industry-ready! 🚀

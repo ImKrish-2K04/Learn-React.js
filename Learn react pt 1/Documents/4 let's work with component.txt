@@ -1,0 +1,62 @@
+--
+SEE:
+
+Understanding React Components and File Structure
+
+Till now, we have seen the importance of key files in a React project, including 'App.jsx', 'App.css', 'main.jsx', 'index.css', and 'index.html'.
+
+We have learned that in 'App.jsx', we write our main component, which is then imported in 'main.jsx'. In 'main.jsx', React renders this component inside the root element of 'index.html', ultimately displaying the UI.
+
+How to Write a Component?
+A component in React is similar to a JavaScript function. It is a function that returns a single HTML element or a group of elements.
+Example: Creating a User-Defined Component
+If we are returning a single element, we can define it after the `return` keyword:
+
+? User-defined component
+function ComponentName() {
+    return <h1>This is the main title</h1>;
+}
+
+? Main App component
+function App() {
+    return <ComponentName />;
+}
+Here, the App component returns the ComponentName component, which will be rendered in the UI.
+
+Creating Components in Separate Files:
+We can create multiple .jsx files, each containing a specific component. Then, we can export that component from the file using the `export` keyword.
+
+1️⃣ Default Export (For Single Component per File)
+If a file contains only one component, we can export it using default export:
+
+? Title.jsx
+function Title() {
+    return <h1>This is the Title</h1>;
+}
+export default Title; ? Default export
+
+To import it in 'App.jsx', we can assign it a unique name if needed:
+import Header from "./Title.jsx"; ? 'Title' is renamed as 'Header'
+
+2️⃣ Named Export (For Multiple Components in a File)
+If a file contains multiple components, we can export one default component but the rest should be named exports:
+
+? Multiple components inside a single file
+export function Title() {
+    return <h1>This is the main heading</h1>;
+}
+
+export function Subtitle() {
+    return <h2>This is the subtitle</h2>;
+}
+
+To import named components in 'App.jsx', we use curly braces `{}`:
+import { Title, Subtitle } from "./Title.jsx";
+
+Conclusion:
+✔ Components are reusable functions that return HTML elements.  
+✔ Components can be default exported (one per file) or named exported (multiple in a file).  
+✔ Default imports can be renamed, while named imports must match the export name.  
+✔ Components help in structuring a React application efficiently.  
+
+With this understanding, you can now create and manage components like a pro in React! 🚀

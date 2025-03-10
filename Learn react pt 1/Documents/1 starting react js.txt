@@ -1,0 +1,35 @@
+--------------------------------------------------------------------------------
+SEE:
+
+React.js is a popular JavaScript library used for building user interfaces. It helps developers create dynamic and interactive web applications efficiently.
+
+At the core of React lies the concept of components. A component is an individual, reusable piece of code that represents a part of the user interface. It can be as simple as a button, a card, or even an entire section of a webpage.
+
+Instead of writing the same UI elements multiple times, React allows us to reuse components. For example, if you need to display five identical buttons on a webpage, you don’t have to write the button code five times. Instead, you can create a Button component once and reuse it wherever needed — making the code cleaner, more organized, and easier to maintain.
+
+Components in React work similarly to functions. We create a functional component (a function that returns UI elements), and wherever we want to display that component, we simply invoke the function — just like calling a regular JavaScript function.This process of invoking a component to create and display elements on the web is known as rendering the component.
+
+This component-based architecture makes React a powerful tool for building scalable and maintainable web applications! 🚀
+
+--------------------------------------------------------------------------------
+SEE:
+
+1. In a React app, multiple React components work together and form a hierarchy.    
+2. Component hierarchy means that a component can be placed inside another component, creating a structured layout.
+3. Example: Suppose we create three components:
+    - ThumbnailComponent (for displaying the video thumbnail)
+    - DescriptionComponent (for showing video details)
+    - LikeComponent (for handling likes)
+    - Now, we create a main component called VideoComponent and embed these three components inside it.
+4. This is how a component hierarchy looks in React.js:
+VideoComponent
+    ├── ThumbnailComponent
+    ├── DescriptionComponent
+    ├── LikeComponent
+    - Here, VideoComponent is the parent component, and the other three are its child components.
+
+NOTE: In React, a component is not just about JavaScript logic; it is a combination of HTML (structure), CSS (styling), and JavaScript (logic) working together to create a complete UI element.
+
+NOTE: The code for a React component is written using a specific syntax called JSX. When creating a React component, we write it inside a file with the .jsx extension. JSX allows us to write HTML inside JavaScript, meaning the code is neither pure JavaScript nor pure HTML — it is a blend of both. In React, when we create a UI component, we define its structure directly within the JavaScript logic.
+
+--------------------------------------------------------------------------------
