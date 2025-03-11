@@ -1,0 +1,102 @@
+--------------------------------------------------------------------------------
+SEE:
+
+Passing Arrays and Objects as Props in React.js:
+- In React, props are not limited to simple values like strings or numbers. We can also pass arrays and objects as props to make components more dynamic.
+
+--------------------------------------------------------------------------------
+
+1️⃣ Passing an Array as a Prop
+- Arrays can be passed as props and accessed inside the child component. However, - when rendering an array directly, React will display all values without spaces or separators.
+
+✅ Example: Passing an Array as a Prop
+```
+const features = ["hi-tech", "durable"];
+<Title feature={features} />
+```
+
+❌ Problem: Directly Displaying an Array
+- If we try to render the array directly, React will join all values without spaces.
+```
+function Title({ feature }) {
+  return <p>{feature}</p>; // ❌ Output: "hi-techdurable"
+}
+```
+
+✅ Solution 1: Using `.join()` Method
+- We can use `.join("separator")` to format the array values properly.
+```
+function Title({ feature }) {
+  return <p>{feature.join(", ")}</p>; // ✅ Output: "hi-tech, durable"
+}
+```
+
+✅ Solution 2: Using `.map()` to Render List Items
+- If we want each value to appear as a list item (`<li>`), we use `.map()`:
+```
+function Title({ feature }) {
+  return (
+    <ul>
+      {feature.map((item, index) => (
+        <li key={index}>{item}</li>
+      ))}
+    </ul>
+  );
+}
+```
+
+--------------------------------------------------------------------------------
+
+2️⃣ Passing an Object as a Prop
+- Objects can also be passed as props, but they cannot be displayed directly in .
+
+✅ Example: Passing an Object as a Prop
+```
+const product = { name: "Laptop", price: "$1000" };
+<Product details={product} />
+```
+
+ ❌ Problem: Directly Rendering an Object
+```
+function Product({ details }) {
+  return <p>{details}</p>; // ❌ ERROR: Objects are not valid as a React child
+}
+```
+
+✅ Solution: Accessing Object Properties
+- Use the dot notation (`details.property`) to access individual properties.
+```
+function Product({ details }) {
+  return (
+    <div>
+      <h2>{details.name}</h2>
+      <p>Price: {details.price}</p>
+    </div>
+  );
+}
+```
+
+--------------------------------------------------------------------------------
+
+3️⃣ Passing Arrays and Objects Inline (Without Creating Variables)
+- We can directly pass arrays and objects without defining them separately.
+
+✅ Inline Array Passing
+```
+<Title feature={["hi-tech", "durable"]} />
+```
+
+✅ Inline Object Passing
+```
+<Product details={{ name: "Laptop", price: "$1000" }} />
+```
+
+--------------------------------------------------------------------------------
+
+4️⃣ Key Takeaways
+✔ Arrays can be passed as props and displayed using `.join()` or `.map()`.  
+✔ Objects must be accessed using dot notation (`object.property`).  
+✔ We can pass arrays and objects inline without defining them separately.  
+✔ React does not allow rendering an object directly in .  
+
+By understanding these techniques, we can make our React components more dynamic and reusable! 🚀

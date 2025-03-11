@@ -1,0 +1,25 @@
+.card {
+  border: 1px solid white;
+  width: 220px;
+  height: 165px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+
+  .price-bar {
+    display: flex;
+    gap: 10px;
+    background-color: bisque;
+    color: black;
+    width: 129%;
+    justify-content: center;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+
+    .mainPrice {
+      text-decoration: line-through;
+    }
+  }
+}

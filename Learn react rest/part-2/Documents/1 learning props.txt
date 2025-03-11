@@ -1,0 +1,71 @@
+--------------------------------------------------------------------------------
+SEE:
+
+Understanding Props in React.js
+
+In React, components are reusable, meaning we create them once and use them multiple times. However, by default, a component contains static data, so when it is rendered multiple times, it appears the same.
+
+To make components dynamic and customizable, we use props (short for properties).
+
+--------------------------------------------------------------------------------
+
+1️⃣ What are Props?
+- Props are properties (key-value pairs) that are passed to a component.
+- They allow us to pass data from a parent component to a child component.
+- Using props, each instance of a component can have different content while using the same component structure.
+- Props cannot be modified inside the component; they are read-only.
+
+--------------------------------------------------------------------------------
+
+2️⃣ Example: Using Props in a Component
+
+✅ Creating a Component that Accepts Props
+
+We define a component and use destructuring to extract the `title` and `details` props.
+
+```
+function Template({ title, details = "dummy text" }) { // Using destructuring
+    return (
+        <>
+            <h1>{title}</h1>
+            <p>{details}</p>
+        </>
+    );
+}
+```
+
+✅ Using Props in the Parent Component
+
+Props are passed to the component as key-value pairs.
+
+```
+function App() {
+    return (
+        <>
+            {/* Passing different props to each instance of the Template component */}
+            <Template title="Title 1" details="Detail 1" />
+            <Template title="Title 2" /> {/* Uses default value for details */}
+        </>
+    );
+}
+```
+
+--------------------------------------------------------------------------------
+
+3️⃣ Explanation of the Example:
+
+✔ `<Template title="Title 1" details="Detail 1" />` → Passes custom title & details.  
+✔ `<Template title="Title 2" />` → Only `title` is passed; `details` takes the default value (`"dummy text"`).  
+✔ Using destructuring (`{ title, details }`) → Makes prop handling cleaner and more readable.  
+✔ One more imp thing, for passing an integer/numeric value we have to enclose it inside a curly braces like: `price={40499}`
+
+--------------------------------------------------------------------------------
+
+4️⃣ Key Takeaways About Props:
+
+✔ Props allow data to be passed from parent to child components.  
+✔ Props are immutable (cannot be changed inside the child component).  
+✔ We can define default values for props using destructuring.  
+✔ They help in creating reusable and dynamic components.  
+
+By understanding props, we can make our React applications more modular and scalable! 🚀

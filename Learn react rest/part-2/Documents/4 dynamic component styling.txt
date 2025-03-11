@@ -1,0 +1,114 @@
+--------------------------------------------------------------------------------
+SEE:
+
+Dynamic Component Styling in React.js
+
+In React, we can dynamically apply styles to components based on props, state, or conditions. There are multiple ways to achieve this, including inline styles, className toggling, and conditional styles.
+
+--------------------------------------------------------------------------------
+
+1️⃣ Applying Inline Styles Dynamically
+- We can use the `style` attribute and pass a JavaScript object containing CSS properties.
+- CSS property names must be written in camelCase.
+
+✅ Example: Changing Background Color Based on Props
+```
+function Box({ isActive }) {
+  const boxStyle = {
+    backgroundColor: isActive ? "green" : "red",
+    color: "white",
+    padding: "10px",
+    textAlign: "center",
+  };
+  
+  return <div style={boxStyle}>This box is {isActive ? "Active" : "Inactive"}</div>;
+}
+```
+- If `isActive` is `true`, the box turns green; otherwise, it turns red.
+
+--------------------------------------------------------------------------------
+
+2️⃣ Conditional Styling Using `className`
+- Instead of inline styles, we can conditionally apply CSS classes using `className`.
+- This approach keeps the cleaner and separates styles from logic.
+
+✅ Example: Toggling Class Based on State
+```
+import "./Button.css";
+
+function Button({ isPrimary }) {
+  return <button className={isPrimary ? "primary-btn" : "secondary-btn"}>Click Me</button>;
+}
+```
+
+Button.css:
+```
+.primary-btn {
+  background-color: blue;
+  color: white;
+}
+
+.secondary-btn {
+  background-color: gray;
+  color: black;
+}
+```
+- If `isPrimary` is `true`, the primary button style is applied.
+- If `false`, the secondary button style is applied.
+
+--------------------------------------------------------------------------------
+
+3️⃣ Using Template Literals for Multiple Classes
+- When multiple conditions exist, we can use template literals for cleaner conditional class handling.
+
+✅ Example: Combining Multiple Classes Dynamically
+```
+function Card({ isHighlighted, isDisabled }) {
+  return (
+    <div className={`card ${isHighlighted ? "highlighted" : ""} ${isDisabled ? "disabled" : ""}`}>
+      Card Content
+    </div>
+  );
+}
+```
+- If `isHighlighted` is `true`, the `highlighted` class is added.
+- If `isDisabled` is `true`, the `disabled` class is added.
+
+--------------------------------------------------------------------------------
+
+4️⃣ Dynamic Styling Using CSS Modules
+- CSS Modules allow scoped styles that don’t conflict globally.
+- Styles are imported as an object, and class names are used as properties.
+
+✅ Example: Styling with CSS Modules
+```
+import styles from "./Card.module.css";
+
+function Card({ isDark }) {
+  return <div className={isDark ? styles.darkCard : styles.lightCard}>Card Content</div>;
+}
+```
+
+Card.module.css:
+```
+.darkCard {
+  background-color: black;
+  color: white;
+}
+
+.lightCard {
+  background-color: white;
+  color: black;
+}
+```
+- This prevents global class conflicts and ensures modular styling.
+
+--------------------------------------------------------------------------------
+
+5️⃣ Key Takeaways
+✔ Inline Styles → Useful for small dynamic styles but not recommended for complex styling.  
+✔ `className` Toggling → Best for managing styles dynamically with external CSS files.  
+✔ Template Literals (` ` ) → Helps apply multiple dynamic classes efficiently.  
+✔ CSS Modules → Useful for scoped styles to avoid conflicts in large projects.  
+
+Mastering dynamic styling in React makes UI more interactive and customizable! 🚀
