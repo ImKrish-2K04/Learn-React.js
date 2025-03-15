@@ -1,8 +1,8 @@
 import "./App.css";
-import MComp from "../part-2/components/Simple Card Project/MainComponent";
+import TodoFunction from "../part-4/Components/SimpleTodoList";
 
 function App() {
-  return <MComp />;
+  return <TodoFunction />;
 }
 
 export default App;
