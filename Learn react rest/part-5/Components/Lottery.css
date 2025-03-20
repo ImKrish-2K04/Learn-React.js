@@ -1,0 +1,12 @@
+.showTicket {
+  border: 1px solid white;
+  border-radius: 20px;
+  font-size: 28px;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+.btn {
+    margin-top: 20px;
+}

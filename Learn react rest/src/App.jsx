@@ -1,8 +1,8 @@
 import "./App.css";
-import TodoFunction from "../part-4/Components/SimpleTodoList";
+import FormHandling from "../part-6/CommentHandling";
 
 function App() {
-  return <TodoFunction />;
+  return <FormHandling />;
 }
 
 export default App;
