@@ -9,7 +9,7 @@ export default function SearchBox() {
   const [whetherData, setWhetherData] = useState({});
   const API_STR = "https://api.openweathermap.org/data/2.5/weather?q=";
   // {city name}&appid={API key}
-  const API_KEY = "b254bcd445fa15b75a8ee31bdf8b4d03";
+  const API_KEY = import.meta.env.VITE_API_KEY;
 
   const handleCityname = (e) => {
     setCityName(e.target.value);
