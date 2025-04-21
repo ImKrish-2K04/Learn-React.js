@@ -1,0 +1,51 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: cursive;
+}
+
+html {
+  font-size: 62.5%;
+  background-color: #333;
+}
+
+.switch {
+  background-color: whitesmoke;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  width: 20rem;
+  height: 8rem;
+  border-radius: 5rem;
+  display: flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+}
+
+.switch-btn {
+  width: 7rem;
+  height: 7rem;
+  border-radius: 50%;
+  position: absolute;
+  left: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+.switch-text {
+  font-size: 3rem;
+}
+
+.on {
+  background-color: #34b634;
+  color: white;
+  transform: translateX(163%);
+}
+
+.off {
+  background-color: #f33030;
+  color: white;
+  transform: translateX(-7.5%);
+}

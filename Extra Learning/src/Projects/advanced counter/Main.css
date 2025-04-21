@@ -1,0 +1,77 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Poppins;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background-color: aliceblue;
+}
+
+.container {
+  border: 1px solid black;
+  width: 70rem;
+  height: 40rem;
+  border-radius: 1rem;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+}
+
+.headings {
+  font-size: 3.5rem;
+  font-weight: 600;
+  height: 7rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.counter {
+  color: #48b9ff;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.hero {
+  height: 33rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6rem;
+  padding: 2.5rem;
+  font-size: 1.8rem;
+}
+
+#steps-field {
+  width: 30rem;
+  border: 1px solid black;
+  appearance: textfield;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.buttons-container {
+  display: flex;
+  gap: 2rem;
+
+  .common-btn {
+    background-color: rgb(72, 185, 255);
+    color: white;
+    border-radius: 0.4rem;
+    padding: 0.5rem 1.5rem;
+    width: 15rem;
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+  }
+}
