@@ -1,0 +1,60 @@
+📁 part-3 Directory – Context API Practice
+
+This `part-3` directory is a practice project based on the `useContext` hook in React.
+
+---
+
+🔍 Objective:
+To understand how to:
+- Create a global context using `createContext()`
+- Build a Context Provider that shares global state and methods
+- Use the `useContext()` hook to consume that state in child components
+- Share the state (`count`) and the state updater function (`setCount()`) across components
+
+---
+
+📂 Project Files (Total 4):
+
+1️⃣ `CounterComponent.jsx`  
+> Main component that consumes and displays the global `count` state.
+
+2️⃣ `Counter.jsx`  
+> Contains two buttons to increment and decrement the global `count` using `setCount()`.
+
+3️⃣ `Style.css`  
+> Provides simple styling to make the UI a little more readable and presentable.
+
+4️⃣ `CounterContext.jsx`  
+> The file where:
+   - `CounterContext` is created using `createContext()`
+   - A provider component (`CounterProvider`) is built using `useState()`
+   - This provider wraps around children to make `count` and `setCount()` globally accessible.
+
+---
+
+🧠 Explanation:
+
+This is a basic **Counter App** where the `count` state and `setCount()` function are managed globally using Context API.  
+
+We’ve wrapped our main component (`CounterComponent`) with the `CounterProvider`, so that any child inside can access and modify the global state using:
+
+```js
+const { count, setCount } = useContext(CounterContext);
+```
+
+📝 Main.jsx (Preserving this for future reference)
+
+We are planning to remove this code later for other experiments, so saving it here:
+
+? Imports
+import CounterComponent from "../part-3/Components/CounterComponent";
+import { CounterProvider } from "../part-3/context/counterContext.jsx";
+
+? Render code
+<StrictMode>
+  <CounterProvider>
+    <CounterComponent />
+  </CounterProvider>
+</StrictMode>
+
+- This setup wraps the entire app inside the Context Provider so that global state is available throughout the component tree.
