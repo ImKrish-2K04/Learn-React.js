@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "country_name": "United States",
+    "capital": "Washington, D.C.",
+    "population": 331000000,
+    "interesting_fact": "The U.S. has the world's largest economy by GDP."
+  },
+  {
+    "id": 2,
+    "country_name": "Japan",
+    "capital": "Tokyo",
+    "population": 126500000,
+    "interesting_fact": "Japan has more than 5 million vending machines."
+  },
+  {
+    "id": 3,
+    "country_name": "Germany",
+    "capital": "Berlin",
+    "population": 83000000,
+    "interesting_fact": "Germany has over 1,500 different types of beer."
+  },
+  {
+    "id": 4,
+    "country_name": "Brazil",
+    "capital": "Brasília",
+    "population": 213000000,
+    "interesting_fact": "Brazil has the largest rainforest in the world, the Amazon."
+  },
+  {
+    "id": 5,
+    "country_name": "India",
+    "capital": "New Delhi",
+    "population": 1408000000,
+    "interesting_fact": "India is home to the world's largest film industry, Bollywood."
+  },
+  {
+    "id": 6,
+    "country_name": "France",
+    "capital": "Paris",
+    "population": 67000000,
+    "interesting_fact": "France is the most visited country in the world."
+  },
+  {
+    "id": 7,
+    "country_name": "Australia",
+    "capital": "Canberra",
+    "population": 25600000,
+    "interesting_fact": "Australia has more kangaroos than people."
+  },
+  {
+    "id": 8,
+    "country_name": "Canada",
+    "capital": "Ottawa",
+    "population": 38000000,
+    "interesting_fact": "Canada has the longest coastline in the world."
+  }
+]
